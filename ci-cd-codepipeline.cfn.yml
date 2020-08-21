@@ -17,7 +17,7 @@
     GitSourceRepo:
       Type: String
       Description: GitHub source repository - must contain a Dockerfile and buildspec.yml in the base
-      Default: FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS 
+      Default: codepipeline
       MinLength: 1
       MaxLength: 100
       ConstraintDescription: You must enter a GitHub repository name
@@ -40,7 +40,7 @@
   
     GitHubUser:
       Type: String
-      Default: aschonn
+      Default: Aschonn
       Description: GitHub username or organization
       MinLength: 3
       MaxLength: 100
@@ -150,7 +150,7 @@
                 response["Reason"] = e
                 response['Data'] = {"Message": "Resource creation failed"}
               response_body = json.dumps(response)
-              headers = {'content-type': '', "content-length": len(response_body) }
+              headers = {'content-type': '', "content-length": str(len(response_body)) }
               put_response = requests.put(event['ResponseURL'], headers=headers, data=response_body)
               return response
         Handler: index.handler
