@@ -1,4 +1,3 @@
-
 FROM python:stretch
 
 COPY . /app
